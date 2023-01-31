@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import reactLogo from '../assets/react.svg';
 
@@ -15,7 +15,7 @@ export default function Home() {
         </a>
       </div>
       <h1>React FYC</h1>
-      <Link to="/articles">Voir les articles</Link>
+      <Link href="/articles">Voir les articles</Link>
     </div>
   );
 }
