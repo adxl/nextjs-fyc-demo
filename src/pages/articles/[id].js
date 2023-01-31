@@ -1,27 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import Link from 'next/link';
 
-export default function ArticleDetails() {
-  const { id } = useParams();
-  const [articleDetails, setArticleDetails] = useState({});
-
-  async function getArticle() {
-    const response = await fetch(`https://dummyjson.com/posts/${id}`);
-    const post = await response.json();
-
-    console.log(post);
-    return post;
-  }
-
-  useEffect(() => {
-    getArticle().then((data) => setArticleDetails(data));
-  }, []);
-
+export default function ArticleDetails({ post: articleDetails }) {
   return (
     <div className="flex justify-center items-center">
       <button type="button" className="block max-w-sm p-6 border rounded-lg shadow bg-gray-800 border-gray-700 hover:bg-gray-700">
         <div className="text-white text-left mb-6">
-          <Link to="/articles">
+          <Link href="/articles">
             <span>Back</span>
           </Link>
         </div>
@@ -44,4 +28,12 @@ export default function ArticleDetails() {
       </button>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+  const response = await fetch(`https://dummyjson.com/posts/${id}`);
+  const post = await response.json();
+
+  return { props: { post } };
 }
