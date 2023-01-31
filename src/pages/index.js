@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-import reactLogo from '../assets/react.svg';
-
 export default function Home() {
   return (
     <div>
@@ -11,7 +9,7 @@ export default function Home() {
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
         <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src="./react.svg" className="logo react" alt="React logo" />
         </a>
       </div>
       <h1>React FYC</h1>
